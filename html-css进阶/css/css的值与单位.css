@@ -1,0 +1,100 @@
+html{
+  font-size: 16px;
+}
+.boxDiv{
+  width: 500px;
+  border: 1px solid #c17eb4 ;
+  margin: 10px auto;
+}
+.wrapper{
+  font-size: 2em;
+}
+.px{
+  width: 200px;
+}
+.vw{
+  width: 10vw;
+}
+.em{
+  width: 10em;
+}
+
+.ems li{
+  font-size: 1.3em;
+}
+.rems li{
+  font-size: 1.3em;
+}
+
+
+.wrapper{
+  width: 400px;
+  border: 5px solid rebeccapurple;
+}
+.px{
+  width: 200px;
+}
+.percent{
+  width: 40%;
+}
+.box{
+  border: 5px solid #00008b;
+  margin: 10px ;
+}
+
+.baiFen li{
+  font-size: 80%;
+}
+.boxDiv .box{
+  opacity: 0.6;
+}
+.one {
+  background-color: hsl(188 97% 28% / .3);
+}
+
+.two {
+  background-color: hsl(321 47% 57% / .7);
+}
+
+.three {
+  background-color: hsl(174 77% 31% / .9);
+}
+
+
+
+.boxDiv .image {
+  background-image: url(../img/star.png);
+}
+
+.gradient {
+  background-image: linear-gradient(90deg, rgba(119,0,255,1) 39%, rgba(0,212,255,1) 100%);
+}
+
+
+.myBox {
+  width:400px;
+  padding: 1em;
+  border-radius: .5em;
+  border: 5px solid rebeccapurple;
+  background-color: lightblue;
+}
+
+.myBox::after {
+  content: "This is a string. I know because it is quoted in the CSS."
+}
+
+.boxDiv .wrapper{
+  width: 400px;
+}
+
+.boxDiv .wrapper .boc{
+  width: calc(20%+100px);
+}
+  
+.myBoxV {
+  border: 5px solid darkblue;
+  width: 20vw;
+  height: 20vh;
+  font-size: 10vh;
+}
+

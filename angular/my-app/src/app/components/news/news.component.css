@@ -1,0 +1,16 @@
+div {
+  width: 550px;
+  margin: 10px auto;
+  border: 5px solid #5ac991;
+}
+.mouse {
+  width: 150px;
+  height: 30px;
+  background-color: #29b8db;
+  text-align: center;
+  line-height: 30px;
+  border: 5px solid #5ac991;
+}
+.ngfor ul li {
+  list-style-type: none;
+}

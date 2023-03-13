@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop-up info box — web components</title>
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+
+    <h1>Pop-up info widget - web components</h1>
+
+    <form>
+        <div>
+            <label for="cvc">Enter your CVC <popup-info img="img/alt.png"
+                    data-text="Your card validation code (CVC) is an extra security feature — it is the last 3 or 4 numbers on the back of your card."></popup-info></label>
+            <input type="text" id="cvc">
+        </div>
+    </form>
+    <popup-info img="img/alt.png" text="Your card validation code (CVC)
+  is an extra security feature — it is the last 3 or 4 numbers on the
+  back of your card.">
+
+
+        <script>
+            // 定义一个叫做 word-count 的 custom element：
+            customElements.define('word-count', WordCount, { extends: 'p' });
+            // 共有两种 custom elements：
+
+            //    Autonomous custom elements 是独立的元素，它不继承其他内建的 HTML 元素。
+            // 你可以直接把它们写成 HTML 标签的形式，来在页面上使用。
+            // 例如 <popup-info>，或者是document.createElement("popup-info")这样。
+            //    Customized built-in elements 继承自基本的 HTML 元素。
+            // 在创建时，你必须指定所需扩展的元素（正如上面例子所示），
+            // 使用时，需要先写出基本的元素标签，并通过 is 属性指定 custom element 的名称。
+            // 例如<p is="word-count">, 或者 document.createElement("p", { is: "word-count" })。
+
+            // 创建element
+            class PopUpInfo extends HTMLElement {
+                constructor() {
+                    super();//必须写
+                    // 创建shadow root结点树的根节点
+                    const shadow = this.attachShadow({ mode: 'open' });
+                    // 自定义三个span标签 wrapper icon info
+                    const wrapper = document.createElement('span');
+                    wrapper.setAttribute('class', 'wrapper');
+
+                    const icon = document.createElement('span');
+                    icon.setAttribute('class', 'icon');
+                    icon.setAttribute('tabindex', 0);
+
+                    var info = document.createElement('span');
+                    info.setAttribute('class', 'info');
+                    // 将text内容添加到span标签上
+                    var text = this.getAttribute('data-text');
+                    info.textContent = text;
+
+
+                    var imgurl;
+                    if (this.hasAttribute('img')) {
+                        imgurl = this.getAttribute('img');
+                    } else {
+                        imgurl = 'img/default.png';
+                    }
+
+                    var img = document.createAttribute('img');
+                    img.src = imgurl;
+                    icon.appendChild(img);
+
+                    // 创建css 应用到shadow dom 上
+                    var style = document.createElement('style');
+                    style.textContent = `
+      .wrapper {
+        position: relative;
+      }
+      .info {
+        font-size: 0.8rem;
+        width: 200px;
+        display: inline-block;
+        border: 1px solid black;
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
+        opacity: 0;
+        transition: 0.6s all;
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+        z-index: 3;
+      }
+      img {
+        width: 1.2rem;
+      }
+      .icon:hover + .info, .icon:focus + .info {
+        opacity: 1;
+      }
+    `;
+
+                    // 把节点加到shadow dom上
+                    shadow.appendChild(style);
+                    console.log(style.isConnected);
+                    shadow.appendChild(wrapper);
+                    wrapper.appendChild(icon);
+                    wrapper.appendChild(info);
+                }
+            }
+            customElements.define('popup-info', PopUpInfo);
+        </script>
+
+</body>
+
+</html>

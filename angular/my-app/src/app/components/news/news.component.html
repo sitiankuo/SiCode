@@ -1,0 +1,31 @@
+<div>
+  <p style="text-align: center">news works!</p>
+  <h3>用户姓名：{{ username }}</h3>
+  <h3>您好我是：{{ msg + "-" + username }}</h3>
+  <h3>学号：{{ students }}</h3>
+</div>
+
+<!-- 模板绑定属性 -->
+<div class="mouse" [title]="students">鼠标放上去看一下</div>
+<div class="strongDiv" [innerHTML]="content"></div>
+<div class="ngfor">
+  <ul>
+    <li *ngFor="let item of arr">
+      {{ item }}
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let item of userlist">{{ item.username }}---{{ item.age }}</li>
+  </ul>
+
+  <br />
+  <ul>
+    <li *ngFor="let item of cars">
+      <h2>{{ item.carName }}</h2>
+      <ol>
+        <li *ngFor="let car of item.list">{{ car.title }}---{{ car.price }}</li>
+      </ol>
+    </li>
+  </ul>
+</div>
